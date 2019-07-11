@@ -1,0 +1,10 @@
+<div class="info-card" *ngFor="let key of objectKeys(info)"
+     [ngClass]="{'main-cards': key === 'assessment_summary' || key === 'latest_summary' }">
+  <div *ngIf="!isTypeObject(info[key]); else isObjectBlock">
+    <span [class]="key">{{ keyChange(key) }}</span>: {{ info[key] }}
+  </div>
+  <ng-template #isObjectBlock>
+    <span [class]="key">{{ keyChange(key) }}</span>:
+    <app-info-card [info]="info[key]"></app-info-card>
+  </ng-template>
+</div>
